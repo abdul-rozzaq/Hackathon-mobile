@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/models/apartment.dart';
 import 'package:hackathon/screens/contract/contract_list_screen.dart';
+import 'package:hackathon/screens/home_screen.dart';
 import 'package:intl/intl.dart';
 
 class CreateContractScreen extends StatefulWidget {
@@ -268,9 +269,12 @@ class CreateContractScreenState extends State<CreateContractScreen> with TickerP
       setState(() => _isLoading = true);
       Future.delayed(const Duration(seconds: 2), () {
         setState(() => _isLoading = false);
+
+        if (!mounted) return;
+
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const ContractStatusScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
       });
     }

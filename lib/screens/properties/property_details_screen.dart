@@ -169,10 +169,9 @@ class PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                             widget.property.latitude,
                             widget.property.longitude,
                           ),
-                          initialZoom: 16.0,
-                          // Foydalanuvchi harakatlarini yoqish
+                          initialZoom: 13.0,
                           interactionOptions: const InteractionOptions(
-                            flags: InteractiveFlag.pinchZoom | InteractiveFlag.drag | InteractiveFlag.doubleTapZoom,
+                            flags: InteractiveFlag.pinchZoom | InteractiveFlag.doubleTapZoom,
                           ),
                         ),
                         children: [
@@ -214,15 +213,7 @@ class PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                       color: AppColors.primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 8),
-            SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
+                  const SizedBox(height: 8),
                   Text(
                     widget.property.description,
                     style: TextStyle(
@@ -230,7 +221,6 @@ class PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                       color: Colors.grey[800],
                     ),
                     overflow: TextOverflow.visible,
-                    softWrap: false,
                   ),
                 ],
               ),
@@ -342,7 +332,7 @@ class PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                             decoration: BoxDecoration(
                               color: _selectedRoom == entry ? AppColors.primaryColor : Colors.white,
-                              border: Border.all(color: isSold ? Colors.grey.shade600 : AppColors.primaryColor, width: 1.5),
+                              border: Border.all(color: isSold ? Colors.red.shade600 : AppColors.primaryColor, width: 1.5),
                               borderRadius: _borderRadius,
                               boxShadow: [
                                 BoxShadow(
@@ -357,7 +347,7 @@ class PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                               '${entry.id}-uy',
                               style: TextStyle(
                                 color: isSold
-                                    ? Colors.grey[600]
+                                    ? Colors.red.shade600
                                     : _selectedRoom == entry
                                         ? Colors.white
                                         : AppColors.primaryColor,
